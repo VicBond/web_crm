@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/VicBond/web_crm/issues"
   },
-  "homepage": "https://github.com/VicBond/web_crm#readme"
+  "homepage": "https://github.com/VicBond/web_crm#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
