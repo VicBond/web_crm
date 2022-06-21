@@ -1,5 +1,5 @@
-
-const port = 5000;
+const app = require('./app')
+const port = process.env.PORT || 5000;
 
 //test route
 // app.get('/', (req, res) => {
