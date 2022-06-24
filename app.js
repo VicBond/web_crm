@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+const morgan = require('morgan');
 const authRoutes = require('./routes/auth');
 const analyticsRoutes = require('./routes/analytics');
 const categoryRoutes = require('./routes/category');
