@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -9,6 +10,9 @@ const orderRoutes = require('./routes/order');
 const positionRoutes = require('./routes/position');
 const app = express();
 
+mongoose.connect('')
+  .then(() => console.log('MongoDB connected.'))
+  .catch(err => console.log('Error connecting to MongoDB', err))
 
 
 app.use(morgan('dev'));
