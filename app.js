@@ -8,9 +8,10 @@ const analyticsRoutes = require('./routes/analytics');
 const categoryRoutes = require('./routes/category');
 const orderRoutes = require('./routes/order');
 const positionRoutes = require('./routes/position');
+const keys = require('./config/keys')
 const app = express();
 
-mongoose.connect('')
+mongoose.connect(keys.mongoURI)
   .then(() => console.log('MongoDB connected.'))
   .catch(err => console.log('Error connecting to MongoDB', err))
 
