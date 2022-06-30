@@ -35,5 +35,12 @@ module.exports.register = async function(req, res) {
         email: req.body.email,
         password: req.body.password
       })
+
+      try {
+        await user.save()
+        res.status(201).json(user)
+      } catch (err) {
+        // err
+      }
   }
 }
