@@ -31,5 +31,9 @@ module.exports.register = async function(req, res) {
     })
   } else {
     // create new user
+      const user = new User({
+        email: req.body.email,
+        password: req.body.password
+      })
   }
 }
