@@ -13,7 +13,16 @@ module.exports.login = async function(req, res) {
   const candidate = await User.findOne({ email: req.body.email });
 
   if (candidate) {
- 
+    const passwordResult = bcrypt.compareSync(req.body.password, candidate.password);
+
+    if (passwordResult) {
+      //generate token
+    } else {
+      res.status(401).json({
+        message: 'Password mismatch, try again',
+      })
+    }
+
   } else {
     res.status(404).json({
       message: 'Email not found',
