@@ -17,6 +17,11 @@ module.exports.login = async function(req, res) {
 
     if (passwordResult) {
       //generate token
+      const token = '';
+
+      res.status(200).json({
+        token: token,
+      })
     } else {
       res.status(401).json({
         message: 'Password mismatch, try again',
