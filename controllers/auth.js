@@ -11,6 +11,14 @@ module.exports.login = async function(req, res) {
   //   }
   // })
   const candidate = await User.findOne({ email: req.body.email });
+
+  if (candidate) {
+ 
+  } else {
+    res.status(404).json({
+      message: 'Email not found',
+    })
+  }
 }
 
 module.exports.register = async function(req, res) {
