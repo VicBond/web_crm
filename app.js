@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const passport = require('passport');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -15,6 +16,8 @@ mongoose.connect(keys.mongoURI)
   .then(() => console.log('MongoDB connected.'))
   .catch(err => console.log('Error connecting to MongoDB', err))
 
+
+app.use(passport.initialize());
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
