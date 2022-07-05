@@ -18,6 +18,7 @@ mongoose.connect(keys.mongoURI)
 
 
 app.use(passport.initialize());
+require('./middleware/passport')(passport);
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
