@@ -73,7 +73,7 @@ module.exports.register = async function(req, res) {
         await user.save()
         res.status(201).json(user)
       } catch (err) {
-        // err
+        errorHandler(res, e)
       }
   }
 }
