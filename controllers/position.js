@@ -22,6 +22,7 @@ module.exports.create = async function(req, res) {
       user: req.user.id,
 
     }).save()
+    res.status(201).json(position)
   } catch (err) {
     errorHandler(res, err);
   }
