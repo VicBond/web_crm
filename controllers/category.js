@@ -1,9 +1,10 @@
 const Category = require('../models/Category');
 const errorHandler = require('../utils/errorHandler');
 
-module.exports.getAll = function(req, res) {
+module.exports.getAll = async function(req, res) {
   try {
-    
+    const categories = await Category.find({user: req.user.id});
+    res.status(200).json(categories);
   } catch (error) {
     errorHandler(res, error);
   }
