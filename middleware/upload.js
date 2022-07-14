@@ -20,3 +20,7 @@ const fileFilter = (req, fiel, cb) => {
   }
 };
 
+const limits = {
+  fileSize: 1024 * 1024 * 5,
+};
+
