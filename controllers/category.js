@@ -34,21 +34,20 @@ module.exports.remove = async function(req, res) {
 }
 
 module.exports.create = async function(req, res) {
-  console.log(req.user)
   const category = new Category({
     name: req.body.name,
     user: req.user.id,
     imageSrc: req.file ? req.file.path : '',
   })
   try {
-    await Category.save();
+    await category.save();
     res.status(201).json(category);
   } catch (error) {
     errorHandler(res, error);
   }
 }
 
-module.exports.update = function(req, res) {
+module.exports.update = async function(req, res) {
   const updated = {
     name: req.body.name
   };
