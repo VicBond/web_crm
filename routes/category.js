@@ -8,8 +8,8 @@ const router = express.Router();
 router.get('/', controller.getAll);
 router.get('/:id', controller.getAll);
 router.delete('/:id', controller.remove);
-router.post('/', controller.create);
-router.patch('/:id', controller.update);
+router.post('/', upload.single('image'), controller.create);
+router.patch('/:id', upload.single('image'), controller.update);
 
 
 module.exports = router;
