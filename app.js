@@ -20,10 +20,11 @@ mongoose.connect(keys.mongoURI)
 app.use(passport.initialize());
 require('./middleware/passport')(passport);
 
-app.use(morgan('dev'));
+app.use(require('morgan')('dev'));
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(require('cors')());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/analytics', analyticsRoutes);
