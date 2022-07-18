@@ -34,6 +34,7 @@ module.exports.remove = async function(req, res) {
 }
 
 module.exports.create = async function(req, res) {
+  console.log(req.user)
   const category = new Category({
     name: req.body.name,
     user: req.user.id,
@@ -48,8 +49,19 @@ module.exports.create = async function(req, res) {
 }
 
 module.exports.update = function(req, res) {
+  const updated = {
+    name: req.body.name
+  };
+  if (req.file) {
+    updated.imageSrc = req.file.path;
+  }
   try {
-    
+    const category = await Category.findOneAndUpdate(
+      {_id: req.paraps.id},
+      {$set: updated},
+      {new: true}
+    )
+    res.status(200).json(category);
   } catch (error) {
     errorHandler(res, error);
   }
