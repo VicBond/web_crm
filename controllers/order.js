@@ -5,5 +5,9 @@ module.exports.getAll = function(req, res) {
   
 }
 module.exports.create = async function(req, res) {
-
+ try {
+   
+ } catch (error) {
+   errorHandler(res, error)
+ }
 }
