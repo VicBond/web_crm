@@ -10,12 +10,17 @@ module.exports.getAll = async function(req, res) {
     query.date = {
       $gte: req.query.start
     }
-  }
+  };
+
   if (req.query.end) {
     if (!query.date) {
       query.date = {};
     }
     query.date['$lte'] = req.query.end;
+  };
+
+  if (req.query.order) {
+    query.order = +req.query.order;
   }
 
   try {
