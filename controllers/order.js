@@ -6,6 +6,18 @@ module.exports.getAll = async function(req, res) {
     user: req.user.id
   };
 
+  if (req.query.start) {
+    query.date = {
+      $gte: req.query.start
+    }
+  }
+  if (req.query.end) {
+    if (!query.date) {
+      query.date = {};
+    }
+    query.date['$lte'] = req.query.end;
+  }
+
   try {
     const orders = await Order
     .find(query)
