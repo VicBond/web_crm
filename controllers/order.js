@@ -1,9 +1,19 @@
 const Order = require('../models/Order');
 const errorHandler = require('../utils/errorHandler');
 
-module.exports.getAll = function(req, res) {
+module.exports.getAll = async function(req, res) {
+  const query = {
+    user: req.user.id
+  };
+
   try {
-    
+    const orders = await Order
+    .find(query)
+    .sort({date: -1})
+    .skip(req.query.offset)
+    .limit(req.query.limit);
+
+    res.status(200).json(orders);
   } catch (error) {
     errorHandler.handle(res, error);
   }
