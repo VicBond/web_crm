@@ -6,7 +6,11 @@ module.exports.getAll = function(req, res) {
 }
 module.exports.create = async function(req, res) {
  try {
-   
+   const lastOrder = await Order
+    .findOne({user: req.user.id})
+    .sort({date: -1});
+    
+
    const order = await new Order({
     list: req.body.list,
     user: req.user.id,
