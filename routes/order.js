@@ -8,4 +8,4 @@ router.get('/', passport.authenticate('jwt', {session: false}), controller.getAl
 router.post('/', passport.authenticate('jwt', {session: false}), controller.create);
 
 
-module.exports = router
+module.exports = router;
