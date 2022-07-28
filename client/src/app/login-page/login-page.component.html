@@ -4,6 +4,17 @@
     <div class="input-field">
       <input formControlName="email" id="email" type="email" />
       <label for="email">Email:</label>
+      <span
+        class="helper-text red-text"
+        *ngIf="form.get('email')!.invalid && form.get('email')!.touched"
+      >
+        <span *ngIf="form.get('email')?.hasError('required')"
+          >Email required</span
+        >
+        <span *ngIf="form.get('email')?.hasError('email')"
+          >Enter valid email</span
+        >
+      </span>
     </div>
     <div class="input-field">
       <input formControlName="password" id="password" type="password" />
@@ -11,6 +22,12 @@
     </div>
   </div>
   <div class="card-action">
-    <button type="submit" class="modal-action btn waves-effect">Войти</button>
+    <button
+      type="submit"
+      class="modal-action btn waves-effect"
+      [disabled]="form.invalid"
+    >
+      Войти
+    </button>
   </div>
 </form>
