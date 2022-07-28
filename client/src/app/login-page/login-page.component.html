@@ -24,7 +24,14 @@
       </span>
     </div>
     <div class="input-field">
-      <input formControlName="password" id="password" type="password" />
+      <input
+        formControlName="password"
+        id="password"
+        type="password"
+        [ngClass]="{
+          invalid: form.get('email')!.invalid && form.get('email')!.touched
+        }"
+      />
       <label for="password">Пароль:</label>
     </div>
   </div>
