@@ -29,10 +29,22 @@
         id="password"
         type="password"
         [ngClass]="{
-          invalid: form.get('email')!.invalid && form.get('email')!.touched
+          invalid:
+            form.get('password')!.invalid && form.get('password')!.touched
         }"
       />
       <label for="password">Пароль:</label>
+      <span
+        class="helper-text red-text"
+        *ngIf="form.get('password')!.invalid && form.get('password')!.touched"
+      >
+        <span *ngIf="form.get('password')?.hasError('required')"
+          >Password required</span
+        >
+        <span *ngIf="form.get('password')?.hasError('minlength')"
+          >Password must be at least 8 characters.
+        </span>
+      </span>
     </div>
   </div>
   <div class="card-action">
