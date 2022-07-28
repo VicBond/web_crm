@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginPageComponent implements OnInit {
 
-  form: FormGroup;
+  form!: FormGroup
 
   constructor() { }
 
@@ -19,4 +19,7 @@ export class LoginPageComponent implements OnInit {
     })
   }
 
+  onSubmit() {
+
+  }
 }
