@@ -2,7 +2,14 @@
   <div class="card-content">
     <span class="card-title">Войти в систему</span>
     <div class="input-field">
-      <input formControlName="email" id="email" type="email" />
+      <input
+        formControlName="email"
+        id="email"
+        type="email"
+        [ngClass]="{
+          invalid: form.get('email')!.invalid && form.get('email')!.touched
+        }"
+      />
       <label for="email">Email:</label>
       <span
         class="helper-text red-text"
