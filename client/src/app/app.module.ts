@@ -25,7 +25,6 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
