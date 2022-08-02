@@ -9,6 +9,8 @@ import { User } from "../interfaces";
 
 export class AuthService {
 
+  private token = null;
+
   constructor(private http: HttpClient) {
 
   }
