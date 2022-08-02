@@ -21,6 +21,8 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmit() {
+    this.form.disable()
+
     // const user = {
     //   email: this.form.value.email,
     //   password: this.form.value.password
@@ -29,6 +31,7 @@ export class LoginPageComponent implements OnInit {
       () => console.log('login successful'),
       error => {
         console.warn(error)
+        this.form.enable()
       }
     )
   }
