@@ -33,4 +33,10 @@ export class AuthService {
   setToken(token: string) {
     this.token = token;
   }
+
+  getToken(): string {
+    return this.token
+  }
+
+
 }
