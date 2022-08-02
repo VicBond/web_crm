@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../shared/services/auth.service';
 
@@ -22,8 +22,12 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       password: new FormControl(null, [Validators.required, Validators.minLength(8)])
     });
 
-    this.route.queryParams.subscribe((Params) => {
-
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params['registered']) {
+        // you can login with your own credentials
+      } else if (params['accessDenied']) {
+        //You should be authorized to work in the system
+      }
     })
   }
 
