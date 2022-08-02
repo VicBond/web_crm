@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  form!: FormGroup
+  form!: FormGroup;
+  aSub!: Subscription;
 
   constructor(private auth: AuthService) { }
 
@@ -27,7 +29,7 @@ export class LoginPageComponent implements OnInit {
     //   email: this.form.value.email,
     //   password: this.form.value.password
     // }
-    this.auth.login(this.form.value).subscribe(
+    this.aSub = this.auth.login(this.form.value).subscribe(
       () => console.log('login successful'),
       error => {
         console.warn(error)
