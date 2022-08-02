@@ -21,11 +21,16 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmit() {
-    const user = {
-      email: this.form.value.email,
-      password: this.form.value.password
-    }
-
+    // const user = {
+    //   email: this.form.value.email,
+    //   password: this.form.value.password
+    // }
+    this.auth.login(this.form.value).subscribe(
+      () => console.log('login successful'),
+      error => {
+        console.warn(error)
+      }
+    )
   }
 
 }
