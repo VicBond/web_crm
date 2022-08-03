@@ -18,16 +18,19 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
     private router: Router) {
 
      }
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
 
-  ngOnInit() {
-    this.form = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(8)])
-    });
-  }
+     ngOnInit() {
+       this.form = new FormGroup({
+         email: new FormControl(null, [Validators.required, Validators.email]),
+         password: new FormControl(null, [Validators.required, Validators.minLength(8)])
+        });
+      }
+
+      ngOnDestroy() {
+        if (this.aSub) {
+          this.aSub.unsubscribe();
+        }
+      }
 
   onSubmit() {
     this.form.disable();
