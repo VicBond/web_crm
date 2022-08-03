@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
@@ -11,7 +12,10 @@ export class RegisterPageComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService,
+    private router: Router) {
+
+     }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -21,7 +25,20 @@ export class RegisterPageComponent implements OnInit {
   }
 
   onSubmit() {
-
+    this.form.disable();
+    this.auth.register(this.form.value).subscribe(
+      () => {
+        this.router.navigate(['/login'], {
+          queryParams: {
+            registered: true
+          }
+        })
+      },
+      error => {
+        console.warn(error)
+        this.form.enable()
+      }
+    )
   }
 
 }
