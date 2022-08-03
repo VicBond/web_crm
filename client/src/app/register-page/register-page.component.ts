@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
@@ -8,14 +9,18 @@ import { AuthService } from '../shared/services/auth.service';
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.css']
 })
-export class RegisterPageComponent implements OnInit {
+export class RegisterPageComponent implements OnInit, OnDestroy {
 
   form!: FormGroup;
+  aSub!: Subscription
 
   constructor(private auth: AuthService,
     private router: Router) {
 
      }
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -26,7 +31,7 @@ export class RegisterPageComponent implements OnInit {
 
   onSubmit() {
     this.form.disable();
-    this.auth.register(this.form.value).subscribe(
+    this.aSub = this.auth.register(this.form.value).subscribe(
       () => {
         this.router.navigate(['/login'], {
           queryParams: {
