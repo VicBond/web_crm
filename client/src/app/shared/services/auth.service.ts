@@ -33,11 +33,11 @@ export class AuthService {
   }
 
   setToken(token: string) {
-    this.token = token;
+    // this.token = token;
   }
 
-  getToken(): string {
-    return this.token
+  getToken(token: string) {
+    // return this.token
   }
 
   isAuthenticated(): boolean {
@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   logout() {
-    this.setToken(null);
+    // this.setToken(null);
     localStorage.clear();
   }
 
