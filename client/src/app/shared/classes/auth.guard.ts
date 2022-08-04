@@ -1,11 +1,12 @@
-import { CanActivate, CanActivateChild } from "@angular/router";
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, RouterStateSnapshot } from "@angular/router";
+import { Observable } from "rxjs";
 
 export class AuthGuard implements CanActivate, CanActivateChild {
-  canActivate() {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
 
   }
 
-  canActivateChild() {
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
 
   }
 }
