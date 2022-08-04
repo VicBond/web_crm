@@ -22,10 +22,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
           accessDenied: true
         }
       })
+      return of(false);
     }
   }
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-
+    return this.canActivate(route, state)
   }
 }
