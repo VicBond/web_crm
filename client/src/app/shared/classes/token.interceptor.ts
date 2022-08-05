@@ -9,7 +9,13 @@ constructor(private auth: AuthService) {
 
 }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
+    if (this.auth.isAuthenticated()) {
+      req = req.clone({
+        setHeaders: {
+          Authorization: this.auth.getToken()
+        }
+      });
+    }
     return next.handle(req)
   }
 }
