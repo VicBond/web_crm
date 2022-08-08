@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MaterialService } from '../shared/classes/material.service';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
@@ -48,6 +49,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       // () => console.log('login successful'),
       () => this.router.navigate(['/overview']),
       error => {
+        MaterialService.toast(error);
         console.warn(error)
         this.form.enable()
       }
