@@ -25,8 +25,10 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
     this.route.queryParams.subscribe((params: Params) => {
       if (params['registered']) {
+        MaterialService.toast('Now you can login with your own credentials')
         // you can login with your own credentials
       } else if (params['accessDenied']) {
+        MaterialService.toast('You should be authorized to work in the system')
         //You should be authorized to work in the system
       }
     })

@@ -19,3 +19,7 @@ constructor(private auth: AuthService) {
     return next.handle(req)
   }
 }
+function token(token: any, string: any): string | string[] {
+  throw new Error("Function not implemented.");
+}
+
