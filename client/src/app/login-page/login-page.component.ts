@@ -30,6 +30,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       } else if (params['accessDenied']) {
         MaterialService.toast('You should be authorized to work in the system')
         //You should be authorized to work in the system
+      } else if (params['sessionFailed']) {
+        MaterialService.toast('Please login to your accountagain')
       }
     })
   }
